@@ -2,6 +2,5 @@
 {
     "files.associations": {
         "*.vue": "vue"
-    },
-    "tslint.autoFixOnSave": true
+    }
 }
