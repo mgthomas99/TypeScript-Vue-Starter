@@ -1,21 +1,27 @@
 import Vue from "vue";
-import HelloComponent from "./components/Hello.vue";
-import HelloDecoratorComponent from "./components/HelloDecorator.vue";
 
-let v = new Vue({
+import MessageComponent from "./components/Message.vue";
+
+export default new Vue({
     el: "#app",
     template: `
-    <div>
-        Name: <input v-model="name" type="text">
-        <h1>Hello Component</h1>
-        <hello-component :name="name" :initialEnthusiasm="5" />
-        <h1>Hello Decorator Component</h1>
-        <hello-decorator-component :name="name" :initialEnthusiasm="5" />
+        <div>
+            <h1>Greetings from Vue/Typescript!</h1>
+            <div>
+                <span>Name: <input v-model="name" type="text"></span>
+                <message :content="msg" :initialEnthusiasm="5" />
+            </div>
         </div>
     `,
-    data: { name: "World" },
     components: {
-        HelloComponent,
-        HelloDecoratorComponent
+        "message": MessageComponent,
+    },
+    computed: {
+        msg(): string {
+            return `Welcome, ${this.name}!`;
+        }
+    },
+    data() {
+        return { name: "" };
     }
 });
